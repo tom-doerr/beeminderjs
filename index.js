@@ -93,10 +93,19 @@ module.exports = function (token) {
           derailsecs %= (60*60);
           var derailmins = Math.floor(derailsecs/60);
           derailsecs %= 60;
+          //var derailtime = goal.limsum.replace(" 0 days", " " +
+          //    (derailhours ?  derailhours + " hours" :
+          //      (derailmins ? derailmins + " mins" :
+          //        derailsecs + " secs")));
+          //var derailtime = goal.limsum.replace(" 0 days", " " +
+          //    (derailhours ?  derailhours + ":" + derailmins :
+          //      (derailmins ? derailmins + " mins" :
+          //        derailsecs + " secs")));
+          var derailhoursstr = "0" + derailhours
+          var derailminsstr = "0" + derailmins
           var derailtime = goal.limsum.replace(" 0 days", " " +
-              (derailhours ?  derailhours + " hours" :
-                (derailmins ? derailmins + " mins" :
-                  derailsecs + " secs")));
+              derailhoursstr.substr(derailhoursstr.length - 2)  + ":" + derailminsstr.substr(derailminsstr.length - 2)
+                  );
           simplegoals.push({
             title: goal.title,
             slug: goal.slug,
